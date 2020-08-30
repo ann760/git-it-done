@@ -14,8 +14,9 @@ var getUserRepos = function(user) {
       if (response.ok){ 
         response.json().then(function(data){
           displayRepos(data, user);
+          console.log(data, user);
         });
-      }else {
+      } else {
         alert("Error: " + response.ststusText);
       }
     })
@@ -46,7 +47,7 @@ repoContainerEl.textContent = "";
 repoSearchTerm.textContent = searchTerm;
 // check if api returned any repos
 if (repos.length === 0) {
-  repoContainerEl.textContent = "No rejpositories found.";
+  repoContainerEl.textContent = "No repositories found.";
   return;
 }
 
