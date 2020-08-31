@@ -14,7 +14,7 @@ var getUserRepos = function(user) {
       if (response.ok){ 
         response.json().then(function(data){
           displayRepos(data, user);
-          console.log(data, user);
+          console.log(data);
         });
       } else {
         alert("Error: " + response.ststusText);
@@ -36,7 +36,6 @@ var formSubmitHandler = function(event) {
     } else {
         alert("Please enter a GitHub username");    
     }
-    console.log(event);
 };
 
 userFormE1.addEventListener("submit", formSubmitHandler);
