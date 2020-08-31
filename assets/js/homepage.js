@@ -24,6 +24,7 @@ var getUserRepos = function(user) {
       // Notice this `.catch()` getting chained onto the end of the `.then()` method
       alert("Unable to connect to GitHub");
     });
+
 };
 
 var formSubmitHandler = function(event) {
@@ -51,20 +52,21 @@ if (repos.length === 0) {
 }
 
 //loop over repos
-  for (var i = 0; i < repos.length; i++){
-    //format reop name
+  for (var i = 0; i < repos.length; i++) {
+    // format repo name
     var repoName = repos[i].owner.login + "/" + repos[i].name;
 
     // create a container for each repo
-    var repoE1 = document.createElement("div");
-    repoE1.classList = "list-item flex-row justify-space-between align-center"
+    var repoEl = document.createElement("a");
+    repoEl.classList = "list-item flex-row justify-space-between align-center";
+    repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName);
 
     // create a span element to hold repository name
     var titleE1 = document.createElement("span");
     titleE1.textContent = repoName;
 
     // append to container
-    repoE1.appendChild(titleE1);
+    repoEl.appendChild(titleE1);
     
     // create a status element
     var statusEl = document.createElement("span");
@@ -78,10 +80,10 @@ if (repos.length === 0) {
     statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
   } 
     // append to container
-    repoE1.appendChild(statusEl);
+    repoEl.appendChild(statusEl);
 
     // append container to the dom
-    repoContainerEl.appendChild(repoE1);
+    repoContainerEl.appendChild(repoEl);
   }
 };
 
